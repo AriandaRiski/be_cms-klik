@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3001
 const bodyParser = require('body-parser')
-// const router = require('./src/routers/index');
+const router = require('./src/routers/index');
 // const knex = require('./src/config/db');
 
 app.use(bodyParser.urlencoded({extended: false}))
