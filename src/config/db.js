@@ -6,6 +6,7 @@ const knex = require('knex')({
       user : 'root',
       password : '',
       database : 'blogs'
-    }
+    },
+    debug : true
   });
 module.exports = knex;

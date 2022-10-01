@@ -7,10 +7,19 @@ const {
         deletePost
 } = require('./../../controllers/PostController');
 
+const {
+        getToken,
+        getLogin  
+} = require('./../../controllers/auth/AuthController');
+
+const {cekLogin} = require('./../../middleware/Auth');
+
+const validation = require('./../../validation/post/post.validation');
+
 router.get('/', getPost);
 router.get('/:id', getPostById);
-router.post('/insertPost', createPost);
-router.put('/edit/:id', editPost);
+router.post('/insertPost', cekLogin, validation.valid_post ,createPost);
+router.put('/edit/:id', getLogin, validation.valid_post, editPost);
 router.delete('/delete/:id', deletePost);
 
 

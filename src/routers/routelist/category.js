@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const validation = require('./../../validation/category/category.validation');
 const { 
     category,
     createCategory,
@@ -9,8 +9,8 @@ const {
 } = require('../../controllers/CategoryController');
 
 router.get('/category', category);
-router.post('/insertCategory', createCategory);
-router.put('/update/:id', editCategory);
+router.post('/insertCategory', validation.valid_category, createCategory);
+router.put('/update/:id', validation.valid_category, editCategory);
 router.delete('/delete/:id', deleteCategory);
 router.get('/categoryId/:id', categoryById);
 
