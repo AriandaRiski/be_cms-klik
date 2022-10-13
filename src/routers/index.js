@@ -1,6 +1,5 @@
 
 const router = require('express').Router();
-const {cekLogin} = require('./../middleware/Auth');
 
 
 const user = require('./routelist/user');
@@ -12,7 +11,7 @@ const auth = require('./routelist/auth');
 router.use('/auth', auth);
 router.use('/user', user);
 router.use('/post', post);
-router.use('/category', cekLogin, category);
+router.use('/category', category);
 router.use('/postCategory', postCategory);
 
 router.use('/', (req, res) => {

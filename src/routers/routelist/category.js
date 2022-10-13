@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const validation = require('./../../validation/category/category.validation');
+const {cekLogin} = require('./../../middleware/Auth');
+
 const { 
     category,
     createCategory,
@@ -8,9 +10,9 @@ const {
     categoryById
 } = require('../../controllers/CategoryController');
 
-router.get('/category', category);
-router.post('/insertCategory', validation.valid_category, createCategory);
-router.put('/update/:id', validation.valid_category, editCategory);
+router.get('/', category);
+router.post('/insertCategory', cekLogin,validation.valid_category, createCategory);
+router.put('/update/:id', cekLogin, validation.valid_category, editCategory);
 router.delete('/delete/:id', deleteCategory);
 router.get('/categoryId/:id', categoryById);
 

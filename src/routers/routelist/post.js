@@ -19,7 +19,7 @@ const validation = require('./../../validation/post/post.validation');
 router.get('/', getPost);
 router.get('/:id', getPostById);
 router.post('/insertPost', cekLogin, validation.valid_post ,createPost);
-router.put('/edit/:id', getLogin, validation.valid_post, editPost);
+router.put('/edit/:id', cekLogin, validation.valid_post, editPost);
 router.delete('/delete/:id', deletePost);
 
 
